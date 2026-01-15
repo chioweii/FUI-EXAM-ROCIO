@@ -28,21 +28,6 @@ body {
 
 /* LAYOUT */
 
-#screen-size-display {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: "DMSans", sans-serif;
-  font-size: 18px;
-  color: #ffffff;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 10px 20px;
-  border-radius: 5px;
-  z-index: 1000;
-  pointer-events: none;
-}
-
 .container {
   width: 100%;
   height: 100%;
@@ -54,7 +39,7 @@ body {
 
 /* this is my left side menu rectangle */
 #menu-rect {
-  width: 5%;
+  width: 7%;
   height: 100%;
   background-color: #587A86;
   opacity: 0.8;
@@ -63,25 +48,25 @@ body {
 }
 
 .main-rect {
-  width: 93%;
+  width: 88%;
   height: 97%;
   border: 2px solid #a0b2bc;
   border-radius: 4px;
   display: flex;
   position: relative;
   margin-left: auto;
-  margin-right: 0.5%;
+  margin-right: 2%;
 }
 
 .main-icon {
-  width: 90vw;      
-  max-width: 390px; 
+  width: 100vw;      
+  max-width: 400px; 
   
   height: auto;    
   
   position: absolute;
-  top: 40%;       
-  right: 0.1rem;  
+  top: 45%;       
+  right: 1.3rem;  
   transform: translateY(-50%);   
 }
 
@@ -94,7 +79,7 @@ body {
   height: min(73vw, 75vh);
 
   position: absolute;
-  left: 0.9rem;
+  left: 3rem;
   top: 49%;
   transform: translateY(-50%);
   display: flex;
@@ -180,8 +165,8 @@ body {
 
 .interaction {
   position: absolute;
-  right: 2.3rem;
-  top: 55.5%;
+  right: 5rem;
+  top: 62%;
   transform: translateY(-50%);
   display: flex;
   align-items: center;
@@ -308,8 +293,8 @@ body {
 
 .time-set {
   position: fixed;
-  right: -30rem !important;
-  top: 3.3rem !important;
+  right: -29rem !important;
+  top: 4rem !important;
   align-items: flex-end;
   text-align: right;
   font-size: 1.1em;
