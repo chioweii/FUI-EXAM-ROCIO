@@ -85,7 +85,10 @@ CIRCLE_ROTATION_BIG.addEventListener("touchmove", (e) => {
   CIRCLE_ROTATION_BIG.style.transform = `rotate(${currentRotation}deg)`;
 
   if (video && video.duration) {
-    video.currentTime = (currentRotation / 360) * video.duration;
+    // Clamp video time to avoid extreme edges which cause lag
+    const normalizedTime = currentRotation / 360;
+    const clampedTime = Math.max(0.01, Math.min(0.99, normalizedTime));
+    video.currentTime = clampedTime * video.duration;
   }
 
   startAngle = currentAngle;
@@ -131,7 +134,10 @@ CIRCLE_ROTATION_SMALL.addEventListener("touchmove", (e) => {
   CIRCLE_ROTATION_SMALL.style.transform = `translate(-50%, -50%) rotate(${currentRotationSmall}deg)`;
 
   if (video && video.duration) {
-    video.currentTime = (currentRotationSmall / 360) * video.duration;
+    // Clamp video time to avoid extreme edges which cause lag
+    const normalizedTime = currentRotationSmall / 360;
+    const clampedTime = Math.max(0.01, Math.min(0.99, normalizedTime));
+    video.currentTime = clampedTime * video.duration;
 
     if (
       Math.abs(rotation) > 0 &&
