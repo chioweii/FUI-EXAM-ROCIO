@@ -2,20 +2,25 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>fui-project</title>
-    <link rel="stylesheet" href="./src/style.css" />
+
+    <!-- ✅ keep ONLY ONE viewport meta -->
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
     />
+
+    <title>fui-project</title>
+
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta
       name="apple-mobile-web-app-status-bar-style"
       content="black-translucent"
     />
+
+    <link rel="stylesheet" href="./src/style.css" />
   </head>
+
   <body>
     <div id="loading-screen">
       <div class="loading-content">
@@ -25,33 +30,39 @@
 
     <div class="container">
       <div id="menu-rect"></div>
+
       <div class="main-rect">
         <div class="image-person">
-          <video id="camera-feed" autoplay></video>
+          <video id="camera-feed" autoplay playsinline></video>
         </div>
+
         <div class="time-set">
           <h2>TIME SET</h2>
           <h2><span class="counter">00</span></h2>
           <h2>DAYS</h2>
         </div>
+
         <div class="client-id">
           <h2>ID/CLIENT//GRETA</h2>
-          <p2 class="info-id"
-            >HOPE PERSISTENCE: HIGH (ANOMALY DETECTED)<br />ISOLATION TOLERANCE:
-            LOW<br />
-            NO CORRECTIVE ACTION REQUIRED.</p2
-          >
+          <p class="info-id">
+            HOPE PERSISTENCE: HIGH (ANOMALY DETECTED)<br />
+            ISOLATION TOLERANCE: LOW<br />
+            NO CORRECTIVE ACTION REQUIRED.
+          </p>
         </div>
+
         <div class="main-icon">
-          <img class="main-icon" src="./public/ui-asset-test-code.svg" alt="" />
+          <img src="./public/ui-asset-test-code.svg" alt="" />
         </div>
+
         <div class="interaction">
           <img
             class="circle-middle"
             src="./public/rotation/circle-middle.svg"
             alt=""
           />
-          <div class="circle-rotation grabbing">
+
+          <div class="circle-rotation">
             <img
               class="circle-rotation-big"
               src="./public/rotation/circle-big-rotation.svg"
@@ -64,22 +75,27 @@
             />
           </div>
         </div>
+
         <div id="circle">
-          <video muted preload="auto">
+          <!-- ✅ playsinline is IMPORTANT for iOS -->
+          <video id="scrub-video" muted playsinline preload="auto">
             <source src="./public/video/video-v2.mp4" type="video/mp4" />
           </video>
         </div>
+
         <div class="under-square-time-adjustment">
           <div class="time-adjustment"><h1>TIME ADJUSTMENT</h1></div>
+
           <div class="inside-under-square-time-adjustment">
             <div class="info-inside-square">
-              <p1>CL 231 <span class="italic-text">GRETA</span></p1>
-              <p2>0012/COOKIE/22:34</p2>
+              <p class="line1">CL 231 <span class="italic-text">GRETA</span></p>
+              <p class="line2">0012/COOKIE/22:34</p>
             </div>
           </div>
         </div>
       </div>
     </div>
+
     <script type="module" src="./src/main.js"></script>
   </body>
 </html>

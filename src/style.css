@@ -1,11 +1,37 @@
-
 /* GLOBAL */
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
+
+  /* ✅ prevents iOS Safari auto text resizing */
+  -webkit-text-size-adjust: 100%;
+}
+
+/* ✅ better font rendering on Apple devices */
+body {
+  background-color: #427088;
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* FONT */
+@font-face {
+  font-family: "DMSans";
+  src: url(../public/typo/DMSans_18pt-Light.ttf) format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "DMSans-Light";
+  src: url(../public/typo/DMSans_18pt-ExtraLight.ttf) format("truetype");
+  font-display: swap;
 }
 
 /* LOADING SCREEN */
@@ -31,15 +57,25 @@ html, body {
 
 .loading-content h1 {
   font-family: "DMSans-Light", sans-serif;
+
+  /* ✅ iPad thin issue fix */
+  font-weight: 400;
+
   font-size: 4rem;
   letter-spacing: 0.3rem;
   color: #ffffff;
   text-align: center;
+
+  /* ✅ no glyph cutting */
+  line-height: 1.2;
+  padding: 0.2em 0;
+
   animation: pulse 2s ease-in-out infinite;
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.3;
   }
   50% {
@@ -47,26 +83,7 @@ html, body {
   }
 }
 
-body {
-  background-color: #427088;
-  display: flex;
-  align-items: stretch;
-  justify-content: flex-start;
-}
-
-/* FONT */
-
-@font-face {
-  font-family: "DMSans";
-  src: url(../public/typo/DMSans_18pt-Light.ttf);
-}
-@font-face {
-  font-family: "DMSans-Light";
-  src: url(../public/typo/DMSans_18pt-ExtraLight.ttf);
-}
-
 /* LAYOUT */
-
 .container {
   width: 100%;
   height: 100%;
@@ -76,11 +93,11 @@ body {
   position: relative;
 }
 
-/* this is my left side menu rectangle */
+/* LEFT SIDE MENU RECTANGLE */
 #menu-rect {
   width: 7%;
   height: 100%;
-  background-color: #587A86;
+  background-color: #587a86;
   opacity: 0.8;
   box-shadow: 5px 0 10px rgba(0, 0, 0, 0.08);
   border-radius: 0;
@@ -97,16 +114,21 @@ body {
   margin-right: 2%;
 }
 
+/* MAIN ICON */
 .main-icon {
-  width: 100vw;      
-  max-width: 400px; 
-  
-  height: auto;    
-  
+  width: 100vw;
+  max-width: 400px;
+  height: auto;
+
   position: absolute;
-  top: 45%;       
-  right: 1.3rem;  
-  transform: translateY(-50%);   
+  top: 45%;
+  right: 1.3rem;
+  transform: translateY(-50%);
+}
+
+.main-icon img {
+  width: 100%;
+  height: auto;
 }
 
 /* CIRCLE */
@@ -127,30 +149,34 @@ body {
   overflow: hidden;
 }
 
-
 #circle video {
   width: 100%;
   height: 100%;
   object-fit: fill;
   filter: hue-rotate(350deg) saturate(80%) brightness(0.8) contrast(1.2);
+
+  /* ✅ helps Safari */
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 /* TIME ADJUSTMENT UNDER */
 .under-square-time-adjustment {
   border: 2px solid #a0b2bc;
 
-    width: 70%;
-    height: 7vh;
-    position: absolute;
-    bottom: 1rem;
-    left: 50%;
-    transform: translateX(-50%);
+  width: 70%;
+  height: 7vh;
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
 
-    display: flex;
-    padding-left: 0.5rem;
+  display: flex;
+  padding-left: 0.5rem;
+  box-sizing: border-box;
 }
 
-.time-adjustment{
+.time-adjustment {
   display: flex;
   align-items: center;
   justify-content: left;
@@ -158,50 +184,69 @@ body {
   height: 100%;
 }
 
-.time-adjustment h1{
+.time-adjustment h1 {
   font-family: "DMSans-Light", sans-serif;
+
+  /* ✅ iPad thin issue fix */
+  font-weight: 400;
+
   font-size: 3rem;
   letter-spacing: 0.2rem;
   color: #ffffff;
+
+  /* ✅ avoid cropping on iPad */
+  line-height: 1.15;
+  padding: 0.15em 0;
+}
+
+.inside-under-square-time-adjustment {
+  display: flex;
+  height: 100%;
+  width: auto;
 }
 
 .info-inside-square {
-  width: 100%;  
+  width: 100%;
   height: 100%;
-  background-color: #3A6375;
+  background-color: #3a6375;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
 
-  padding: 1rem;  
+  padding: 0.8rem;
   box-sizing: border-box;
-  line-height: 1.2rem;
+
+  /* ✅ safer line-height */
+  line-height: 1.2;
 }
 
-.info-inside-square p1{
+.info-inside-square .line1 {
   font-family: "DMSans", sans-serif;
+  font-weight: 400;
   font-size: 1.4rem;
-  inline-size: none;
   letter-spacing: 0.1rem;
   color: #ffffff;
   margin: 0;
-  padding: 0;}
+  padding: 0;
+}
 
-.info-inside-square p2{
+.info-inside-square .line2 {
   font-family: "DMSans", sans-serif;
+  font-weight: 400;
   font-size: 1rem;
   letter-spacing: 0.1rem;
   color: #ffffff;
-  margin: 0;
-  padding: 0;}
+  margin: 0.2rem 0 0 0;
+  padding: 0;
+}
 
 .italic-text {
-    font-style: italic;
-  }
-/* INTERACTION */
+  font-style: italic;
+}
 
+/* INTERACTION */
 .interaction {
   position: absolute;
   right: 5rem;
@@ -223,10 +268,7 @@ body {
   width: 100%;
   height: 100%;
   position: relative;
-
-
-  cursor: grab;
-  touch-action: none;
+  touch-action: none; /* ✅ important for iOS */
   user-select: none;
   transform-origin: center center;
 }
@@ -241,14 +283,10 @@ body {
   transition: opacity 0.2s;
 }
 
-.circle-rotation-big.grabbing {
-  opacity: 1;
-}
-
 .circle-rotation-small {
   position: absolute;
   top: 50%;
-  left: 50%; 
+  left: 50%;
   width: 200px;
   height: 200px;
   transform: translate(-50%, -50%);
@@ -256,13 +294,9 @@ body {
   opacity: 0.5;
   transition: opacity 0.2s;
 }
-.circle-rotation-small.grabbing {
-  opacity: 1;
-}
 
-.circle-rotation:active,
-.circle-rotation.grabbing {
-  cursor: grabbing;
+.circle-rotation.grabbing .circle-rotation-big,
+.circle-rotation.grabbing .circle-rotation-small {
   opacity: 1;
 }
 
@@ -277,7 +311,6 @@ body {
 }
 
 /* CAMERA */
-
 .image-person {
   border: 2px solid #a0b2bc;
   width: 10%;
@@ -294,12 +327,11 @@ body {
 .image-person video {
   width: 100%;
   height: 100%;
-  object-fit: cover;   
+  object-fit: cover;
   filter: hue-rotate(180deg) saturate(20%) brightness(1.05) contrast(1.2);
 }
 
 /* TEXT CAMERA */
-
 .client-id {
   font-family: "DMSans", sans-serif;
   opacity: 0.7;
@@ -309,8 +341,7 @@ body {
   margin-left: 0.5rem;
   display: flex;
   flex-direction: column;
-
-  
+  gap: 0.15rem;
 }
 
 .client-id h2 {
@@ -318,66 +349,58 @@ body {
   margin: 0;
   padding: 0;
   font-size: 1.4rem;
+
+  /* ✅ safer line-height */
+  line-height: 1.15;
 }
 
 .client-id .info-id {
-  font-size: 0.45rem;
-  line-height: 1;
+  font-size: 0.55rem;
+  line-height: 1.25;
   margin: 0;
   padding: 0;
-  margin-top: -0.1rem;
 }
 
-/*  TIME SET */
-
+/* TIME SET */
 .time-set {
-  position: fixed;
-  right: -29.5rem !important;
-  top: 4rem !important;
-  align-items: flex-end;
-  text-align: right;
-  font-size: 1.1em;
-}
+  position: absolute;
+  top: 1.5rem;
+  left: 7rem;
 
-.time-set {
-  align-self: flex-start;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  gap: 0.15rem;
 
   font-family: "DMSans-Light", sans-serif;
+  font-weight: 400; /* ✅ iPad thin fix */
   opacity: 0.7;
   color: #ffffff;
 
-  top: 1.5rem;
-  left: 7rem;
   padding: 0.7em 1.2em;
+  text-align: center;
+}
+
+.time-set h2 {
+  margin: 0;
+  padding: 0;
+
+  /* ✅ prevent iPad cropping */
+  line-height: 1.15;
 }
 
 .time-set h2:first-child {
   font-size: 1.2rem;
   font-weight: 400;
   opacity: 0.8;
-  margin-bottom: 0.13em;
 }
 
 .time-set h2:last-child {
   font-size: 2.2rem;
   font-weight: 700;
-  margin-top: 0;
 }
 
-.counter{
+.counter {
   font-size: 3.8em;
   font-weight: 700;
-  /* letter-spacing: -0.05em; */
   vertical-align: middle;
-}
-
-.time-set h2 {
-  margin-top: -0.39em;
-  margin-bottom: -0.39em;
-  line-height: 1.1;
 }
