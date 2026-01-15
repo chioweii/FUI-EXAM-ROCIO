@@ -17,6 +17,22 @@ navigator.mediaDevices.getUserMedia({ video: true }).then((stream) => {
   video.srcObject = stream;
 });
 
+// REAL-TIME CLOCK
+function updateTime() {
+  const now = new Date();
+  const hours = now.getHours().toString().padStart(2, "0");
+  const minutes = now.getMinutes().toString().padStart(2, "0");
+  const timeString = `${hours}:${minutes}`;
+
+  const timeElement = document.getElementById("current-time");
+  if (timeElement) {
+    timeElement.textContent = timeString;
+  }
+}
+
+updateTime();
+setInterval(updateTime, 1000);
+
 // COUNTER
 const counterSpan = document.querySelector(".counter");
 let loopCount = 0;

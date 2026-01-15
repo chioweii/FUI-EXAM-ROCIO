@@ -19,12 +19,17 @@
   <body>
     <div id="loading-screen">
       <div class="loading-content">
-        <h1>TAP TO START NOW.</h1>
+        <div class="loading-square">
+          <h1>TAP TO START YOUR DAY</h1>
+        </div>
       </div>
     </div>
-
     <div class="container">
-      <div id="menu-rect"></div>
+      <div id="menu-rect">
+        <div class="menu-icon">
+          <img class="menu-icon" src="./public/ui-icons.svg" alt="" />
+        </div>
+      </div>
       <div class="main-rect">
         <div class="image-person">
           <video id="camera-feed" autoplay></video>
@@ -35,7 +40,7 @@
           <h2>DAYS</h2>
         </div>
         <div class="client-id">
-          <h2>ID/CLIENT//GRETA</h2>
+          <h2>ID/CLIENT//ROCIO</h2>
           <p2 class="info-id"
             >HOPE PERSISTENCE: HIGH (ANOMALY DETECTED)<br />ISOLATION TOLERANCE:
             LOW<br />
@@ -73,8 +78,8 @@
           <div class="time-adjustment"><h1>TIME ADJUSTMENT</h1></div>
           <div class="inside-under-square-time-adjustment">
             <div class="info-inside-square">
-              <p1>CL 231 <span class="italic-text">GRETA</span></p1>
-              <p2>0012/COOKIE/22:34</p2>
+              <p1>CL 231 <span class="italic-text">ROCIO</span></p1>
+              <p2>0012/COOKIE/<span id="current-time">22:34</span></p2>
             </div>
           </div>
         </div>
