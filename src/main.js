@@ -1,3 +1,16 @@
+// LOADING SCREEN
+const loadingScreen = document.getElementById("loading-screen");
+
+function hideLoadingScreen() {
+  loadingScreen.classList.add("hidden");
+}
+
+loadingScreen.addEventListener("click", hideLoadingScreen);
+loadingScreen.addEventListener("touchstart", function (e) {
+  e.preventDefault();
+  hideLoadingScreen();
+});
+
 // CAMERA FEED
 navigator.mediaDevices.getUserMedia({ video: true }).then((stream) => {
   const video = document.getElementById("camera-feed");

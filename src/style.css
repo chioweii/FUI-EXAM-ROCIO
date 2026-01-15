@@ -8,6 +8,45 @@ html, body {
   overflow: hidden;
 }
 
+/* LOADING SCREEN */
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #427088;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  cursor: pointer;
+  transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+#loading-screen.hidden {
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+
+.loading-content h1 {
+  font-family: "DMSans-Light", sans-serif;
+  font-size: 4rem;
+  letter-spacing: 0.3rem;
+  color: #ffffff;
+  text-align: center;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
 body {
   background-color: #427088;
   display: flex;
@@ -20,14 +59,10 @@ body {
 @font-face {
   font-family: "DMSans";
   src: url(../public/typo/DMSans_18pt-Light.ttf);
-  font-weight: normal;
-  font-display: swap;
 }
 @font-face {
   font-family: "DMSans-Light";
   src: url(../public/typo/DMSans_18pt-ExtraLight.ttf);
-  font-weight: 200;
-  font-display: swap;
 }
 
 /* LAYOUT */
@@ -128,9 +163,6 @@ body {
   font-size: 3rem;
   letter-spacing: 0.2rem;
   color: #ffffff;
-  -webkit-text-stroke: 0.3px #ffffff;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
 }
 
 .info-inside-square {
@@ -155,8 +187,6 @@ body {
   letter-spacing: 0.1rem;
   color: #ffffff;
   margin: 0;
-  -webkit-text-stroke: 0.2px #ffffff;
-  text-rendering: optimizeLegibility;
   padding: 0;}
 
 .info-inside-square p2{
@@ -165,9 +195,7 @@ body {
   letter-spacing: 0.1rem;
   color: #ffffff;
   margin: 0;
-  padding: 0;
-  -webkit-text-stroke: 0.2px #ffffff;
-  text-rendering: optimizeLegibility;}
+  padding: 0;}
 
 .italic-text {
     font-style: italic;
@@ -290,8 +318,6 @@ body {
   margin: 0;
   padding: 0;
   font-size: 1.4rem;
-  -webkit-text-stroke: 0.2px #ffffff;
-  text-rendering: optimizeLegibility;
 }
 
 .client-id .info-id {
@@ -354,54 +380,4 @@ body {
   margin-top: -0.39em;
   margin-bottom: -0.39em;
   line-height: 1.1;
-  -webkit-text-stroke: 0.2px #ffffff;
-  text-rendering: optimizeLegibility;
-}
-
-/* MEDIA QUERIES FOR IPAD AND TABLETS */
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
-  
-  /* Strengthen all typography on iPad */
-  .time-adjustment h1 {
-    -webkit-text-stroke: 0.5px #ffffff;
-    font-weight: 400;
-  }
-  
-  .info-inside-square p1 {
-    -webkit-text-stroke: 0.3px #ffffff;
-    font-weight: 400;
-  }
-  
-  .info-inside-square p2 {
-    -webkit-text-stroke: 0.3px #ffffff;
-    font-weight: 400;
-  }
-  
-  .client-id h2 {
-    -webkit-text-stroke: 0.3px #ffffff;
-    font-weight: 400;
-  }
-  
-  .time-set h2 {
-    -webkit-text-stroke: 0.3px #ffffff;
-    font-weight: 400;
-  }
-  
-  .counter {
-    -webkit-text-stroke: 0.4px #ffffff;
-    font-weight: 700;
-  }
-}
-
-/* Safari specific fixes for iPad */
-@supports (-webkit-touch-callout: none) {
-  .time-adjustment h1,
-  .info-inside-square p1,
-  .info-inside-square p2,
-  .client-id h2,
-  .time-set h2,
-  .counter {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
 }
