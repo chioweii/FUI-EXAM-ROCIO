@@ -1,3 +1,15 @@
+// SCREEN SIZE DISPLAY
+const screenSizeDisplay = document.getElementById("screen-size-display");
+
+function updateScreenSize() {
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+  screenSizeDisplay.textContent = `${width} x ${height}`;
+}
+
+updateScreenSize();
+window.addEventListener("resize", updateScreenSize);
+
 // CAMERA FEED
 navigator.mediaDevices.getUserMedia({ video: true }).then((stream) => {
   const video = document.getElementById("camera-feed");

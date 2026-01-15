@@ -19,14 +19,29 @@ body {
 
 @font-face {
   font-family: "DMSans";
-  src: url(./typo/DMSans_18pt-Light.ttf);
+  src: url(../public/typo/DMSans_18pt-Light.ttf);
 }
 @font-face {
   font-family: "DMSans-Light";
-  src: url(./typo/DMSans_18pt-ExtraLight.ttf);
+  src: url(../public/typo/DMSans_18pt-ExtraLight.ttf);
 }
 
 /* LAYOUT */
+
+#screen-size-display {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "DMSans", sans-serif;
+  font-size: 18px;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px 20px;
+  border-radius: 5px;
+  z-index: 1000;
+  pointer-events: none;
+}
 
 .container {
   width: 100%;
