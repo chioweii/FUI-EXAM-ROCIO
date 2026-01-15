@@ -1,5 +1,3 @@
-import "./style.css";
-
 // CAMERA FEED
 navigator.mediaDevices.getUserMedia({ video: true }).then((stream) => {
   const video = document.getElementById("camera-feed");
