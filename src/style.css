@@ -13,17 +13,25 @@ body {
   display: flex;
   align-items: stretch;
   justify-content: flex-start;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* FONT */
 
 @font-face {
   font-family: "DMSans";
-  src: url(../public/typo/DMSans_18pt-Light.ttf);
+  src: url(/typo/DMSans_18pt-Light.ttf) format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: "DMSans-Light";
-  src: url(../public/typo/DMSans_18pt-ExtraLight.ttf);
+  src: url(/typo/DMSans_18pt-ExtraLight.ttf) format('truetype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
 }
 
 /* LAYOUT */

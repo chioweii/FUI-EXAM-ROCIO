@@ -32,17 +32,9 @@ const CIRCLE_ROTATION_SMALL = document.querySelector(".circle-rotation-small");
 const video = document.querySelector("#circle video");
 
 if (video) {
-  video.addEventListener("ended", () => {
-    if (!video.loop) updateCounter();
-  });
-
-  let lastTime = 0;
-  video.addEventListener("timeupdate", () => {
-    if (lastTime > video.duration - 0.5 && video.currentTime < 1) {
-      updateCounter();
-    }
-    lastTime = video.currentTime;
-  });
+  // Pause video and start at second 15
+  video.pause();
+  video.currentTime = 15;
 }
 
 let whenDragging = false;
@@ -92,9 +84,8 @@ CIRCLE_ROTATION_BIG.addEventListener("touchmove", (e) => {
   currentRotation = ((currentRotation % 360) + 360) % 360;
   CIRCLE_ROTATION_BIG.style.transform = `rotate(${currentRotation}deg)`;
 
-  if (video) {
-    const prevTime = video.currentTime;
-    video.currentTime = (currentRotation / 360) * 33;
+  if (video && video.duration) {
+    video.currentTime = (currentRotation / 360) * video.duration;
   }
 
   startAngle = currentAngle;
@@ -139,9 +130,8 @@ CIRCLE_ROTATION_SMALL.addEventListener("touchmove", (e) => {
   currentRotationSmall = ((currentRotationSmall % 360) + 360) % 360;
   CIRCLE_ROTATION_SMALL.style.transform = `translate(-50%, -50%) rotate(${currentRotationSmall}deg)`;
 
-  if (video) {
-    const prevTime = video.currentTime;
-    video.currentTime = (currentRotationSmall / 360) * 33;
+  if (video && video.duration) {
+    video.currentTime = (currentRotationSmall / 360) * video.duration;
 
     if (
       Math.abs(rotation) > 0 &&
