@@ -20,10 +20,14 @@ body {
 @font-face {
   font-family: "DMSans";
   src: url(../public/typo/DMSans_18pt-Light.ttf);
+  font-weight: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: "DMSans-Light";
   src: url(../public/typo/DMSans_18pt-ExtraLight.ttf);
+  font-weight: 200;
+  font-display: swap;
 }
 
 /* LAYOUT */
@@ -124,6 +128,9 @@ body {
   font-size: 3rem;
   letter-spacing: 0.2rem;
   color: #ffffff;
+  -webkit-text-stroke: 0.3px #ffffff;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 .info-inside-square {
@@ -148,6 +155,8 @@ body {
   letter-spacing: 0.1rem;
   color: #ffffff;
   margin: 0;
+  -webkit-text-stroke: 0.2px #ffffff;
+  text-rendering: optimizeLegibility;
   padding: 0;}
 
 .info-inside-square p2{
@@ -156,7 +165,9 @@ body {
   letter-spacing: 0.1rem;
   color: #ffffff;
   margin: 0;
-  padding: 0;}
+  padding: 0;
+  -webkit-text-stroke: 0.2px #ffffff;
+  text-rendering: optimizeLegibility;}
 
 .italic-text {
     font-style: italic;
@@ -279,6 +290,8 @@ body {
   margin: 0;
   padding: 0;
   font-size: 1.4rem;
+  -webkit-text-stroke: 0.2px #ffffff;
+  text-rendering: optimizeLegibility;
 }
 
 .client-id .info-id {
@@ -341,4 +354,54 @@ body {
   margin-top: -0.39em;
   margin-bottom: -0.39em;
   line-height: 1.1;
+  -webkit-text-stroke: 0.2px #ffffff;
+  text-rendering: optimizeLegibility;
+}
+
+/* MEDIA QUERIES FOR IPAD AND TABLETS */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  
+  /* Strengthen all typography on iPad */
+  .time-adjustment h1 {
+    -webkit-text-stroke: 0.5px #ffffff;
+    font-weight: 400;
+  }
+  
+  .info-inside-square p1 {
+    -webkit-text-stroke: 0.3px #ffffff;
+    font-weight: 400;
+  }
+  
+  .info-inside-square p2 {
+    -webkit-text-stroke: 0.3px #ffffff;
+    font-weight: 400;
+  }
+  
+  .client-id h2 {
+    -webkit-text-stroke: 0.3px #ffffff;
+    font-weight: 400;
+  }
+  
+  .time-set h2 {
+    -webkit-text-stroke: 0.3px #ffffff;
+    font-weight: 400;
+  }
+  
+  .counter {
+    -webkit-text-stroke: 0.4px #ffffff;
+    font-weight: 700;
+  }
+}
+
+/* Safari specific fixes for iPad */
+@supports (-webkit-touch-callout: none) {
+  .time-adjustment h1,
+  .info-inside-square p1,
+  .info-inside-square p2,
+  .client-id h2,
+  .time-set h2,
+  .counter {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }
