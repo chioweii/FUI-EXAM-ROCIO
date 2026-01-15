@@ -39,7 +39,6 @@ if (video) {
 let whenDragging = false;
 let startAngle = 0;
 let currentRotation = 0;
-let videoRotation = 0; // Track continuous rotation for video
 
 function getElementCenter(element) {
   const rect = element.getBoundingClientRect();
@@ -77,7 +76,6 @@ CIRCLE_ROTATION_BIG.addEventListener("touchmove", (e) => {
   );
 
   const rotation = currentAngle - startAngle;
-  videoRotation += rotation;
   currentRotation += rotation;
   // console.log("Big circle rotation (deg):", currentRotation);
 
@@ -86,10 +84,7 @@ CIRCLE_ROTATION_BIG.addEventListener("touchmove", (e) => {
   CIRCLE_ROTATION_BIG.style.transform = `rotate(${currentRotation}deg)`;
 
   if (video && video.duration) {
-    // Use continuous rotation to avoid large seeks
-    const loops = Math.floor(Math.abs(videoRotation) / 360);
-    const normalizedRotation = ((videoRotation % 360) + 360) % 360;
-    video.currentTime = (normalizedRotation / 360) * video.duration;
+    video.currentTime = (currentRotation / 360) * video.duration;
   }
 
   startAngle = currentAngle;
@@ -105,7 +100,6 @@ CIRCLE_ROTATION_BIG.addEventListener("touchend", () => {
 let whenDraggingSmall = false;
 let startAngleSmall = 0;
 let currentRotationSmall = 0;
-let videoRotationSmall = 0; // Track continuous rotation for video
 
 CIRCLE_ROTATION_SMALL.addEventListener("touchstart", (e) => {
   whenDraggingSmall = true;
@@ -130,16 +124,13 @@ CIRCLE_ROTATION_SMALL.addEventListener("touchmove", (e) => {
 
   const rotation = currentAngle - startAngleSmall;
   let prevRotationSmall = currentRotationSmall;
-  videoRotationSmall += rotation;
   currentRotationSmall += rotation;
 
   currentRotationSmall = ((currentRotationSmall % 360) + 360) % 360;
   CIRCLE_ROTATION_SMALL.style.transform = `translate(-50%, -50%) rotate(${currentRotationSmall}deg)`;
 
   if (video && video.duration) {
-    // Use continuous rotation to avoid large seeks
-    const normalizedRotation = ((videoRotationSmall % 360) + 360) % 360;
-    video.currentTime = (normalizedRotation / 360) * video.duration;
+    video.currentTime = (currentRotationSmall / 360) * video.duration;
 
     if (
       Math.abs(rotation) > 0 &&

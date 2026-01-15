@@ -13,8 +13,6 @@ body {
   display: flex;
   align-items: stretch;
   justify-content: flex-start;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 /* FONT */
@@ -244,7 +242,7 @@ body {
 .image-person {
   border: 2px solid #a0b2bc;
   width: 10%;
-  height: 18%;
+  height: 15%;
   position: relative;
   margin-top: 0.2rem;
   margin-left: 0.2rem;
