@@ -68,7 +68,6 @@ function resetCounter() {
     video.currentTime = 15;
   }
 
-  // Remove transition after animation completes
   setTimeout(() => {
     if (CIRCLE_ROTATION_BIG) CIRCLE_ROTATION_BIG.style.transition = "";
     if (CIRCLE_ROTATION_SMALL) CIRCLE_ROTATION_SMALL.style.transition = "";
