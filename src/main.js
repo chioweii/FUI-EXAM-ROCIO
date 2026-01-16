@@ -44,6 +44,35 @@ function updateCounter() {
 function resetCounter() {
   loopCount = 0;
   counterSpan.textContent = "00";
+
+  const CIRCLE_ROTATION_BIG = document.querySelector(".circle-rotation-big");
+  const CIRCLE_ROTATION_SMALL = document.querySelector(
+    ".circle-rotation-small"
+  );
+  const video = document.querySelector("#circle video");
+
+  if (CIRCLE_ROTATION_BIG) {
+    CIRCLE_ROTATION_BIG.style.transition = "transform 0.8s ease-out";
+    CIRCLE_ROTATION_BIG.style.transform = "rotate(0deg)";
+    currentRotation = 0;
+  }
+
+  if (CIRCLE_ROTATION_SMALL) {
+    CIRCLE_ROTATION_SMALL.style.transition = "transform 0.8s ease-out";
+    CIRCLE_ROTATION_SMALL.style.transform =
+      "translate(-50%, -50%) rotate(0deg)";
+    currentRotationSmall = 0;
+  }
+
+  if (video && video.duration) {
+    video.currentTime = 15;
+  }
+
+  // Remove transition after animation completes
+  setTimeout(() => {
+    if (CIRCLE_ROTATION_BIG) CIRCLE_ROTATION_BIG.style.transition = "";
+    if (CIRCLE_ROTATION_SMALL) CIRCLE_ROTATION_SMALL.style.transition = "";
+  }, 800);
 }
 
 const circleMiddle = document.querySelector(".circle-middle");
